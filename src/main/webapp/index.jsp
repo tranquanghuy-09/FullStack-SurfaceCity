@@ -1,0 +1,467 @@
+<%@ page import="vn.edu.iuh.fit.backend.models.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.iuh.fit.backend.models.ProductPrice" %>
+<%@ page import="vn.edu.iuh.fit.backend.models.ProductImage" %>
+<%@ page import="java.util.Optional" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="vn.edu.iuh.fit.backend.models.CartDetail" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.DecimalFormatSymbols" %>
+<%@ page import="java.util.Locale" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+  Object object = session.getAttribute("productList");
+  if(object==null){
+    request.getRequestDispatcher("control-servlet?action=getListProduct").forward(request, response);
+    return;
+  }
+  List<Product> productList = (List<Product>) object;
+
+  List<CartDetail> cartDetailList;
+  Object objCartDetailList = session.getAttribute("cartDetailList");
+  if(objCartDetailList==null) {
+    cartDetailList = new ArrayList<>();
+  }else{
+    cartDetailList = (List<CartDetail>) objCartDetailList;
+  }
+  session.setAttribute("cartDetailList", cartDetailList);
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Điện thoại</title>
+  <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+<%--  <link rel="stylesheet" href="../css/style.css">--%>
+  <link rel="stylesheet" href="./css/style.css">
+
+  <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/sanpham.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+
+  <script src="./js/products.js"></script>
+
+  <style>
+    .slider-container-right {
+      display: block;
+      flex-wrap: wrap;
+      padding: 0;
+      justify-content: space-around;
+    }
+
+    .slider-container-right li {
+      width: 100%;
+      height: 50%;
+      text-align: center;
+      margin-bottom: 2px;
+
+    }
+
+    .slider-container-right li img {
+      width: 320px;
+      height: 170px;
+      border-radius: 5px;
+    }
+
+
+    .slider-container-left-top {
+      height: 350px;
+    }
+
+    .slider-container-left-bottom {
+      height: 0px;
+    }
+
+    .container a {
+      color: #ddd;
+      text-decoration: none;
+    }
+
+    .footer-container a {
+      text-decoration: none;
+    }
+
+    .menu-bar-container {
+      margin-top: -10px;
+    }
+
+    nav {
+      height: 75px;
+    }
+
+    .section-policy {
+      margin-top: -10px;
+    }
+
+    .temp a:hover>img {
+      transform: translateY(-20px);
+    }
+
+    .temp:hover {
+      box-shadow: 3px 3px 5px rgb(246, 242, 242);
+    }
+
+    .temp a>img {
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+
+<body>
+<nav style="padding-top: 10px; height:75px">
+  <div class="container">
+    <ul>
+      <li><a href="index.jsp"><img src="./img/THAD Mobile-logo.png" alt="" style="width: 200px;height: 40px;"></a>
+      </li>
+      <li id="adress-form"><a href="#">Đà Nẵng <i class="fa fa-caret-down" aria-hidden="true"></i></a> </li>
+      <li><input type="text" placeholder="Bạn tìm gì...."><i class="fa fa-search" aria-hidden="true"></i></li>
+      <li>
+        <a href="cart.jsp">
+          <button style="position: relative; display: inline-block; padding-left:10px; padding-right: 38px;">
+            Giỏ hàng <i class="fa fa-shopping-cart"></i> &nbsp;
+            <span class="badge badge-danger" style="font-size: 15px; position: absolute; top: -8px;"><%= cartDetailList.size()%></span>
+          </button>
+        </a>
+      </li>
+      <li><a href="">Lịch sử <br> đơn hàng</a></li>
+      <li><a href=""> <span class="btn-content"><span class="btn-top"></span></span>Mua thẻ nạp ngay</a></li>
+      <li><a href="">14h Công nghệ</a></li>
+      <li><a href="">Hỏi đáp</a></li>
+
+      <div class="adress-form">
+        <div class="adress-form-content">
+          <h2>Chọn địa chỉ nhận hàng <span id="adress-close">X Đóng</span></h2>
+          <form action="">
+            <p>Chọn đầy đủ địa chỉ nhận hàng để biết chính xác thời gian giao</p>
+            <select name="">
+              <option value="#">-- Chọn địa điểm</option>
+              <option value="#">Đà Nẵng</option>
+              <option value="#" selected>Thành phố Hồ Chí Minh</option>
+              <option value="#">Hà Nội</option>
+            </select>
+            <select name="" class="mt-1">
+              <option value="#">-- Chọn Quận\Huyện</option>
+              <option value="#">Quận 1</option>
+              <option value="#">TP. Thủ Đức</option>
+              <option value="#">Quận 3</option>
+              <option value="#">Quận 4</option>
+              <option value="#">Quận 5</option>
+              <option value="#">Quận 6</option>
+              <option value="#">Quận 7</option>
+              <option value="#">Quận 8</option>
+              <option value="#">Quận 9</option>
+              <option value="#">Quận Bình Tân</option>
+              <option value="#">Quận Bình Thạnh</option>
+              <option value="#">Quận Gò Vấp</option>
+            </select>
+            <select name="" class="mt-1">
+              <option value="#">-- Chọn Phường\Xã</option>
+              <option value="#">Phường 1</option>
+              <option value="#">Phường 2</option>
+              <option value="#">Phường 3</option>
+              <option value="#">Phường 4</option>
+            </select>
+            <input type="text" placeholder="Số nhà, tên, đường">
+            <button>Xác nhận</button>
+          </form>
+        </div>
+      </div>
+    </ul>
+  </div>
+</nav>
+<section class="menu-bar">
+  <div class="container">
+    <div class="menu-bar-container">
+      <ul>
+        <li><a href="index.jsp" style="padding-left: 20px; padding-right: 20px;">Trang chủ</a></li>
+        <li><a href="index.jsp" style="padding-left: 20px; padding-right: 20px;"><i class="fa fa-mobile" aria-hidden="true"></i> Điện thoại </a></li>
+        <li><a href="./html/phukien.html" style="padding-left: 20px; padding-right: 20px;"><i class="fa fa-headphones" aria-hidden="true"></i> Phụ kiện <i
+                class="fa fa-caret-down" aria-hidden="true"></i></a>
+          <div class="submenu">
+            <ul>
+              <li><a href="">Pin sạc dự phòng</a></li>
+              <li><a href="">Ốp lưng điện thoại</a></li>
+              <li><a href="">Sạc, cáp</a></li>
+              <li><a href="">Tai nghe</a></li>
+              <li><a href="">Loa</a></li>
+              <li><a href="">Miếng dán điện thoại</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="./html/DiaChi.html" style="padding-left: 20px; padding-right: 20px;"> Địa Chỉ</a></li>
+        <li><a href="#" style="padding-left: 20px; padding-right: 20px;"> Giới thiệu</a>
+          <div class="submenu">
+            <ul>
+              <li><a href="./html/GioiThieuWeb.html">Giới thiệu trang web</a></li>
+              <li><a href="./html/GioiThieuThanhVien.html">Giới thiệu thành viên</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="login.jsp" style="padding-left: 20px; padding-right: 20px;"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Đăng nhập</a>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- -----------------Policy-------------------------- -->
+<section class="section-policy">
+  <div class="wraper">
+    <div class="container-1">
+      <div class="policy-inner">
+        <div class="item">
+          <div class="item-inner">
+            <div class="item-l">
+              <img src="./img/Policy/icon-free-72h.png" alt="miễn phí 72h">
+            </div>
+            <div class="item-r">
+              <div class="policy-title">Sử dụng miễn phí</div>
+              <p>Sản phẩm 72h</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-inner">
+            <div class="item-l">
+              <img src="./img/Policy/icon-bh.png" alt="bao hanh">
+            </div>
+            <div class="item-r">
+              <div class="policy-title">Bảo hành</div>
+              <p>6 - 15 tháng 1 đổi 1</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-inner">
+            <div class="item-l">
+              <img src="./img/Policy/icon-thu-cu.png" alt="thu cu">
+            </div>
+            <div class="item-r">
+              <div class="policy-title">Thu cũ đổi mới</div>
+              <p>Không bù tiền mặt</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- -----------------Slider-------------------------- -->
+<section class="slider">
+  <div class="container">
+    <div class="slider-container">
+      <div class="slider-container-left">
+        <div class="slider-container-left-top-container">
+          <div class="slider-container-left-top">
+            <a href=""><img src="./img/slide/silde5.png" alt=""></a>
+            <a href=""><img src="./img/slide/silde6.png" alt=""></a>
+            <a href=""><img src="./img/slide/slide3.png" alt=""></a>
+            <a href=""><img src="./img/slide/slide4.png" alt=""></a>
+            <a href=""><img src="./img/slide/slider1.png" alt=""></a>
+          </div>
+          <div class="slider-container-left-top-btn">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="slider-container-left-bottom">
+        </div>
+
+      </div>
+      <div class="slider-container-right">
+        <li><a href=""><img src="./img/pic/anh7.png" alt=""></a></li>
+        <li><a href=""><img src="./img/pic/anh6.png" alt=""></a></li>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="baner-one">
+  <div class="container">
+    <div class="baner-one-content">
+      <ul>
+        <li>Hãng <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <div class="submenuone">
+            <ul>
+              <li><a href="">Iphone</a></li>
+              <li><a href="">Samsung</a></li>
+              <li><a href="">OPPO</a></li>
+              <li><a href="">Xiaomi</a></li>
+              <li><a href="">Realme</a></li>
+              <li><a href="">Vivo</a></li>
+
+            </ul>
+          </div>
+        </li>
+        <li>Giá <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <div class="submenuone">
+            <ul>
+              <li class="di"><a href="">Dưới 2 triệu</a></li>
+              <li><a href="">Từ 2 - 4 Triệu</a></li>
+              <li><a href="">Từ 4 - 8 Triệu</a></li>
+              <li><a href="">Trên 8 Triệu</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>Loại điện thoại <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <div class="submenuone">
+            <ul>
+              <li><a href="">Android</a></li>
+              <li><a href="">iPhone (IOS)</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>Ram <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <div class="submenuone">
+            <ul>
+              <li style="width: 60px;"><a href="">2 GB</a></li>
+              <li style="width: 60px;"><a href="">3 GB</a></li>
+              <li style="width: 60px;"> <a href="">4 GB</a></li>
+              <li style="width: 60px;"><a href="">8 GB</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>Bộ nhớ trong <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <div class="submenuone">
+            <ul>
+              <li style="width: 60px;"><a href="">8 GB</a></li>
+              <li style="width: 70px;"><a href="">16 GB</a></li>
+              <li style="width: 70px;"> <a href="">32 GB</a></li>
+              <li style="width: 70px;"><a href="">64 GB</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="baner-two">
+  <div class="container">
+    <div class="baner-two-content">
+      <div class="baner-two-content-1">
+        <button><a href=""><img src="./img/dienthoai/icon6.jpg" alt=""></a></button>
+      </div>
+      <div class="baner-two-content-2">
+        <button><a href=""><img src="./img/dienthoai/icon12.png" alt=""></a></button>
+      </div>
+      <div class="baner-two-content-3">
+        <button><a href=""><img src="./img/dienthoai/icon8.jpg" alt=""></a></button>
+      </div>
+      <div class="baner-two-content-4">
+        <button><a href=""><img src="./img/dienthoai/icon9.jpg" alt=""></a></button>
+      </div>
+      <div class="baner-two-content-5">
+        <button><a href=""><img src="./img/dienthoai/icon7.png" alt=""></a></button>
+      </div>
+      <div class="baner-two-content-6">
+        <button><a href=""><img src="./img/dienthoai/icon11.jpg" alt=""></a></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sản phẩm bán chạy-->
+<section class="container section latest__products mt-4" id="latest">
+<%--  <div class="row pro" id="pro1">--%>
+<%--  </div>--%>
+  <div class="row pro01" id="pro1">
+  <%
+    for(Product product : productList){
+      List<ProductPrice> priceList = product.getProductPriceList();
+      ProductPrice productPrice = null;
+      Optional<ProductPrice> latestProductPrice = priceList.stream()
+              .max((pp1, pp2) -> pp1.getPrice_date_time().compareTo(pp2.getPrice_date_time()));
+      if(latestProductPrice.isPresent()){
+        productPrice = latestProductPrice.get();
+      }
+      List<ProductImage> imageList = product.getProductImageList();
+      String pathImage = imageList.get(0).getPath();
+        assert productPrice != null;
+  %>
+
+    <div class='col-lg-3 temp'>
+    <a href='productdetail.jsp?id=<%= product.getProduct_id()%>' class='nav-link'>
+      <img src="<%= pathImage%>" alt="<%=imageList.get(0).getAlternative()%>">
+      <h3> <%= product.getName()%> </h3>
+      <%
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###₫");
+        String price = decimalFormat.format(productPrice.getPrice());
+      %>
+      <p style="font-size: 20px; color: black; font-weight: bold; line-height: 15px; text-align: center;"><%= price%></p>
+      </a>
+    </div>
+  <%
+    }
+  %>
+  </div>
+
+
+</section>
+
+<!-- ---------------------footer thông tin ------------------------------- -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="content-one">
+      <ul>
+        <li>
+          <h2>Sản phẩm</h2>
+        </li>
+        <li><a href="">Điện thoại mới</a></li>
+        <li><a href="">Điện thoại cũ</a></li>
+        <li><a href="">Linh kiện điện thoại mới</a></li>
+        <li><a href="">Linh kiện nổi bật</a></li>
+      </ul>
+    </div>
+    <div class="content-two">
+      <ul>
+        <li>
+          <h2>Thông tin</h2>
+        </li>
+        <li><a href="">Giới thiệu về công ty</a></li>
+        <li><a href="">Chính sách bảo mật</a></li>
+        <li><a href="">Chính sách bảo hành</a></li>
+        <li><a href="">Khách hàng thân thiết</a></li>
+        <li><a href="">Chính sách đổi trả</a></li>
+        <li><a href="">Chính sách trả góp</a></li>
+      </ul>
+    </div>
+    <div class="content-three">
+      <ul>
+        <li>
+          <h2>Tài khoản</h2>
+        </li>
+        <li><a href="">Lịch sử mua hàng</a></li>
+        <li><a href="">Tài khoản của tôi</a></li>
+        <li><a href="">Khuyến mãi</a></li>
+        <li><a href="">Sản phẩm yêu thích</a></li>
+      </ul>
+    </div>
+    <div class="content-four">
+      <ul>
+        <li>
+          <h2>Liên hệ với chúng tôi</h2>
+        </li>
+        <li><a href="">Địa chỉ: Nguyễn Văn Bảo, phường 4, Quận Gò Vấp, thành phố Hồ Chí Minh</a></li>
+        <li><a href="">Tư vấn mua hàng: 0368636452</a></li>
+        <li><a href="">Tư vấn kĩ thuật: 0327003644</a></li>
+        <li><a href="">Email: tranquanghuyit09@gmail.com</a></li>
+        <li><a href="./html/sitemap.html"> Site Map</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="./js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phụ kiện</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/products.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <style>
+        .contai {
+            background-color: rgb(251, 243, 234);
+        }
+
+        .slider {
+            margin: 30px;
+            height: 250px;
+        }
+
+        .slider-container-right {
+            display: block;
+            flex-wrap: wrap;
+            padding: 0;
+            justify-content: space-around;
+        }
+
+        .slider-container-right li {
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            margin-bottom: 2px;
+        }
+
+        .slider-container-right li img {
+            width: 320px;
+            height: 122px;
+            border-radius: 5px;
+        }
+
+        .slider-container-left-top {
+            height: 250px;
+        }
+
+        .slider-container-left-bottom {
+            height: 0px;
+        }
+
+        .container a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .footer-container a {
+            text-decoration: none;
+        }
+
+        .menu-bar-container {
+            margin-top: -16px;
+        }
+
+        .menu-bar {
+            margin-top: 10px;
+        }
+
+        .baner-one {
+            height: 200px;
+        }
+
+        .img1 {
+            border-radius: 60px;
+            background-color: rgb(62, 178, 241);
+            width: 100px;
+        }
+
+        .img2 {
+            border-radius: 60px;
+            background-color: rgb(244, 145, 207);
+            width: 100px;
+        }
+
+        .img3 {
+            border-radius: 60px;
+            background-color: rgb(252, 195, 104);
+            width: 100px;
+        }
+
+        .img4 {
+            border-radius: 60px;
+            background-color: rgb(178, 255, 152);
+            width: 100px;
+        }
+
+        .img5 {
+            border-radius: 60px;
+            background-color: rgb(170, 243, 238);
+            width: 100px;
+        }
+
+        .baner-one-content-text h4 {
+            font-weight: bold;
+            font-size: 22px;
+            padding: 10px;
+        }
+
+        .baner-one-content a {
+            color: #333;
+            font-size: 15px;
+            align-items: center;
+        }
+
+        .baner-two-content-one img {
+            width: 140px;
+        }
+
+        .baner-two-content-one p {
+            width: 140px;
+            height: 15px;
+            color: rgb(71, 118, 247);
+            font-size: 17px;
+            line-height: 30px;
+        }
+
+        .baner-three {
+            margin-top: 50px;
+        }
+
+        .baner-three-content img {
+            width: 100%;
+        }
+
+        .product-gallery-three-content-title li {
+            background-color: rgb(252, 252, 252);
+            width: auto;
+        }
+
+        .product-gallery-three-content-title ul li a {
+            font-size: 15px;
+        }
+
+        .product-gallery-three-content-title {
+            justify-content: center;
+        }
+
+        .product-gallery-three-content-product {
+            margin-top: -20px;
+        }
+
+        .product-gallery-three-content-product-item {
+            background-color: white;
+        }
+
+        .product-gallery-three-content-product-item:hover a>img {
+            transform: translateY(-20px);
+        }
+
+        .product-gallery-three-content-product-item:hover {
+            box-shadow: 3px 3px 5px rgb(204, 201, 201);
+        }
+
+        .product-gallery-three-content-product-item a img {
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            height: 75px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="../html/index.html"><img src="../img/THAD Mobile-logo.png" alt=""
+                            style="width: 200px;height: 40 px;"></a>
+                </li>
+                <li id="adress-form"><a href="#">Đà Nẵng <i class="fa fa-caret-down" aria-hidden="true"></i></a> </li>
+                <li><input type="text" placeholder="Bạn tìm gì...."><i class="fa fa-search" aria-hidden="true"></i></li>
+                <li><a href="GioHang.html"><button><i class="fa fa-shopping-cart"></i>Giỏ hàng</button> </a> </li>
+                <li><a href="">Lịch sử <br> đơn hàng</a></li>
+                <li><a href=""> <span class="btn-content"><span class="btn-top"></span></span>Mua thẻ nạp ngay</a></li>
+                <li><a href="">14h Công nghệ</a></li>
+                <li><a href="">Hỏi đáp</a></li>
+
+                <div class="adress-form">
+                    <div class="adress-form-content">
+                        <h2 class="font-weight-bold">Chọn địa chỉ nhận hàng <span id="adress-close">X Đóng</span></h2>
+                        <form action="">
+                            <p>Chọn đầy đủ địa chỉ nhận hàng để biết chính xác thời gian giao</p>
+                            <select name="">
+                                <option value="#">-- Chọn địa điểm</option>
+                                <option value="#">Đà Nẵng</option>
+                                <option value="#" selected>Thành phố Hồ Chí Minh</option>
+                                <option value="#">Hà Nội</option>
+                            </select>
+                            <select name="" class="mt-1">
+                                <option value="#">-- Chọn Quận\Huyện</option>
+                                <option value="#">Quận 1</option>
+                                <option value="#">TP. Thủ Đức</option>
+                                <option value="#">Quận 3</option>
+                                <option value="#">Quận 4</option>
+                                <option value="#">Quận 5</option>
+                                <option value="#">Quận 6</option>
+                                <option value="#">Quận 7</option>
+                                <option value="#">Quận 8</option>
+                                <option value="#">Quận 9</option>
+                                <option value="#">Quận Bình Tân</option>
+                                <option value="#">Quận Bình Thạnh</option>
+                                <option value="#">Quận Gò Vấp</option>
+                            </select>
+                            <select name="" class="mt-1">
+                                <option value="#">-- Chọn Phường\Xã</option>
+                                <option value="#">Phường 1</option>
+                                <option value="#">Phường 2</option>
+                                <option value="#">Phường 3</option>
+                                <option value="#">Phường 4</option>
+                            </select>
+                            <input type="text" placeholder="Số nhà, tên, đường">
+                            <button>Xác nhận</button>
+                        </form>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <section class="menu-bar">
+        <div class="container">
+            <div class="menu-bar-container">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="sanpham.html"><i class="fa fa-mobile" aria-hidden="true"></i> Điện thoại </a></li>
+                    <li><a href="phukien.html"><i class="fa fa-headphones" aria-hidden="true"></i> Phụ kiện <i
+                                class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        <div class="submenu">
+                            <ul>
+                                <li><a href="">Pin sạc dự phòng</a></li>
+                                <li><a href="">Ốp lưng điện thoại</a></li>
+                                <li><a href="">Sạc, cáp</a></li>
+                                <li><a href="">Tai nghe</a></li>
+                                <li><a href="">Loa</a></li>
+                                <li><a href="">Miếng dán điện thoại</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="DiaChi.html"> Địa Chỉ</a></li>
+                    <li><a href="#"> Giới thiệu</a>
+                        <div class="submenu">
+                            <ul>
+                                <li><a href="GioiThieuWeb.html">Giới thiệu trang web</a></li>
+                                <li><a href="GioiThieuThanhVien.html">Giới thiệu thành viên</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="dangnhap.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Đăng nhập</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- -----------------Slider-------------------------- -->
+    <section class="slider">
+        <div class="container">
+            <div class="slider-container">
+                <div class="slider-container-left">
+                    <div class="slider-container-left-top-container">
+                        <div class="slider-container-left-top">
+                            <a href=""><img src="../img/slide/slide10.png" alt=""></a>
+                            <a href=""><img src="../img/slide/slide9.png" alt=""></a>
+                            <a href=""><img src="../img/slide/slide8.png" alt=""></a>
+                            <a href=""><img src="../img/slide/slide7.png" alt=""></a>
+                        </div>
+                        <div class="slider-container-left-top-btn">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="slider-container-left-bottom">
+                    </div>
+                </div>
+                <div class="slider-container-right">
+                    <li><a href=""><img src="../img/pic/anh10.png" alt=""></a></li>
+                    <li><a href=""><img src="../img/pic/anh9.png" alt=""></a></li>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="contai">
+        <section class="baner-one">
+            <div class="container">
+                <div class="baner-one-content">
+                    <div class="baner-one-content-text">
+                        <h4>PHỤ KIỆN NỔI BẬT</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"> <a href=""><img src="../img/phukien/icon1.png" alt="" class="img1"><br>
+                                <p>Sạc dự phòng</p>
+                            </a></div>
+                        <div class="col-2"><a href=""><img src="../img/phukien/icon2.png" alt="" class="img2"><br>
+                                <p style="margin-left: 21px;">Sạc, cáp</p>
+                            </a></div>
+                        <div class="col-2"><a href=""><img src="../img/phukien/icon3.png" alt="" class="img3"><br>
+                                <p style="margin-left: 21px;"> Tai nghe</p>
+                            </a></div>
+                        <div class="col-2"><a href=""><img src="../img/phukien/icon5.png" alt="" class="img4"><br>Ốp
+                                lưng, miếng dán</a></div>
+                        <div class="col-2"><a href=""><img src="../img/phukien/icon4.png" alt="" class="img5"><br>
+                                <p style="margin-left: 40px;">Loa</p>
+                            </a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="baner-two">
+            <div class="container">
+                <div class="baner-two-content">
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row baner-two-content-one">
+                                <div class="col-2">
+                                    <button><a href=""><img src="../img/phukien/icon6.jpg" alt=""></a></button>
+                                </div>
+                                <div class="col-2">
+                                    <button><a href=""><img src="../img/phukien/icon7.png" alt=""></a></button>
+                                </div>
+                                <div class="col-2">
+                                    <button><a href=""><img src="../img/phukien/icon8.jpg" alt=""></a></button>
+                                </div>
+                                <div class="col-2">
+                                    <button><a href=""><img src="../img/phukien/icon9.jpg" alt=""></a></button>
+                                </div>
+                                <div class="col-2">
+                                    <button><a href=""><img src="../img/phukien/icon12.png" alt=""></a></button>
+                                </div>
+                                <div class="col-2">
+                                    <button><a href=""><img src="../img/phukien/icon11.jpg" alt=""></a></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="row baner-two-content-one">
+                                <div class="col-2">
+                                    <button><a href="">
+                                            <p>Xem thêm</p>
+                                        </a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- ---------------Product------------------ -->
+        <section>
+            <div class="baner-three">
+                <div class="container">
+                    <div class="baner-three-content">
+                        <img src="../img/phukien/anh1.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-gallery-three">
+            <div class="container">
+                <div class="product-gallery-three-content">
+                    <div class="product-gallery-three-content-title">
+                        <ul>
+                            <li style="background-color: rgb(248, 217, 43);"><a href="">Nổi bật</a></li>
+                            <li><a href=""> Cáp sạc</a></li>
+                            <li><a href=""> Tai nghe</a></li>
+                            <li><a href=""> Ốp lưng</a></li>
+                        </ul>
+                    </div>
+                    <div class="product-gallery-three-content-product acsApple">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="baner-three">
+                <div class="container">
+                    <div class="baner-three-content">
+                        <img src="../img/phukien/anh2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="product-gallery-three">
+            <div class="container">
+                <div class="product-gallery-three-content">
+                    <div class="product-gallery-three-content-title">
+                        <ul>
+                            <li style="background-color: rgb(248, 217, 43);"><a href="">Nổi bật</a></li>
+                            <li><a href=""> Dung lượng 10000mAh</a></li>
+                            <li><a href=""> Dung lượng 20000mAh</a></li>
+                            <li><a href=""> Dưới 300.000đ</a></li>
+                        </ul>
+                    </div>
+                    <div class="product-gallery-three-content-product acsPinSacDuPhong">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="baner-three">
+                <div class="container">
+                    <div class="baner-three-content">
+                        <img src="../img/phukien/anh3.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="product-gallery-three">
+            <div class="container">
+                <div class="product-gallery-three-content">
+                    <div class="product-gallery-three-content-title">
+                        <ul>
+                            <li style="background-color: rgb(248, 217, 43);"><a href="">Nổi bật</a></li>
+                            <li><a href=""> Cáp sạc USB</a></li>
+                            <li><a href=""> Cáp sạc Type-C</a></li>
+                            <li><a href=""> Cáp lightning</a></li>
+                        </ul>
+                    </div>
+                    <div class="product-gallery-three-content-product acsCapSac">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- ---------------------footer thông tin ------------------------------- -->
+    <footer class="footer" style="margin-top: -3px;">
+        <div class="footer-container">
+            <div class="content-one">
+                <ul>
+                    <li>
+                        <h2>Sản phẩm</h2>
+                    </li>
+                    <li><a href="">Điện thoại mới</a></li>
+                    <li><a href="">Điện thoại cũ</a></li>
+                    <li><a href="">Linh kiện điện thoại mới</a></li>
+                    <li><a href="">Linh kiện nổi bật</a></li>
+                </ul>
+            </div>
+            <div class="content-two">
+                <ul>
+                    <li>
+                        <h2>Thông tin</h2>
+                    </li>
+                    <li><a href="">Giới thiệu về công ty</a></li>
+                    <li><a href="">Chính sách bảo mật</a></li>
+                    <li><a href="">Chính sách bảo hành</a></li>
+                    <li><a href="">Khách hàng thân thiết</a></li>
+                    <li><a href="">Chính sách đổi trả</a></li>
+                    <li><a href="">Chính sách trả góp</a></li>
+                </ul>
+            </div>
+            <div class="content-three">
+                <ul>
+                    <li>
+                        <h2>Tài khoản</h2>
+                    </li>
+                    <li><a href="">Lịch sử mua hàng</a></li>
+                    <li><a href="">Tài khoản của tôi</a></li>
+                    <li><a href="">Khuyến mãi</a></li>
+                    <li><a href="">Sản phẩm yêu thích</a></li>
+                </ul>
+            </div>
+            <div class="content-four">
+                <ul>
+                    <li>
+                        <h2>Liên hệ với chúng tôi</h2>
+                    </li>
+                    <li><a href="">Địa chỉ: Nguyễn Văn Bảo, phường 4, Quận Gò Vấp, thành phố Hồ Chí Minh</a></li>
+                    <li><a href="">Tư vấn mua hàng: 0368636452</a></li>
+                    <li><a href="">Tư vấn kĩ thuật: 0327003644</a></li>
+                    <li><a href="">Email: 20024591.iuh@gmail.com</a></li>
+                    <li><a href="../html/sitemap.html"> Site Map</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>

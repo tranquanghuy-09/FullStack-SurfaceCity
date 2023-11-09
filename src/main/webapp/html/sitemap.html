@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Map</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        .container a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+
+        .menu-bar {
+            margin-top: -16px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/index.jsp"><img src="../img/THAD Mobile-logo.png" alt=""
+                            style="width: 200px;"></a>
+                </li>
+                <li id="adress-form"><a href="#">Đà Nẵng <i class="fa fa-caret-down" aria-hidden="true"></i></a> </li>
+                <li><input type="text" placeholder="Bạn tìm gì...."><i class="fa fa-search" aria-hidden="true"></i></li>
+                <li><a href="GioHang.html"><button><i class="fa fa-shopping-cart"></i>Giỏ hàng</button> </a> </li>
+                <li><a href="">Lịch sử <br> đơn hàng</a></li>
+                <li><a href=""> <span class="btn-content"><span class="btn-top"></span></span>Mua thẻ nạp ngay</a></li>
+                <li><a href="">14h Công nghệ</a></li>
+                <li><a href="">Hỏi đáp</a></li>
+
+                <div class="adress-form">
+                    <div class="adress-form-content">
+                        <h2>Chọn địa chỉ nhận hàng <span id="adress-close">X Đóng</span></h2>
+                        <form action="">
+                            <p>Chọn đầy đủ địa chỉ nhận hàng để biết chính xác thời gian giao</p>
+                            <select name="">
+                                <option value="#">-- Chọn địa điểm</option>
+                                <option value="#">Đà Nẵng</option>
+                            </select>
+                            <select name="">
+                                <option value="#">-- Chọn Quận\Huyện</option>
+                                <option value="#">Đà Nẵng</option>
+                            </select>
+                            <select name="">
+                                <option value="#">-- Chọn Phường\Xã</option>
+                                <option value="#">Đà Nẵng</option>
+                            </select>
+                            <input type="text" placeholder="Số nhà, tên, đường">
+                            <button>Xác nhận</button>
+                        </form>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <section class="menu-bar">
+        <div class="container">
+            <div class="menu-bar-container">
+                <ul>
+                    <li><a href="/index.jsp">Trang chủ</a></li>
+                    <li><a href="sanpham.html"><i class="fa fa-mobile" aria-hidden="true"></i> Điện thoại </a></li>
+                    <li><a href="phukien.html"><i class="fa fa-headphones" aria-hidden="true"></i> Phụ kiện <i
+                                class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        <div class="submenu">
+                            <ul>
+                                <li><a href="">Pin sạc dự phòng</a></li>
+                                <li><a href="">Ốp lưng điện thoại</a></li>
+                                <li><a href="">Sạc, cáp</a></li>
+                                <li><a href="">Tai nghe</a></li>
+                                <li><a href="">Loa</a></li>
+                                <li><a href="">Miếng dán điện thoại</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="DiaChi.html"> Địa Chỉ</a></li>
+                    <li><a href="#"> Giới thiệu</a>
+                        <div class="submenu">
+                            <ul>
+                                <li><a href="GioiThieuWeb.html">Giới thiệu trang web</a></li>
+                                <li><a href="GioiThieuThanhVien.html">Giới thiệu thành viên</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="dangnhap.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Đăng nhập</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="sitemap">
+        <div class="card-header-custom">
+            <a class="card-link" href="../html/index.html">
+                Trang chủ THAD Mobile
+            </a>
+        </div>
+
+        <div class="card-header-custom">
+            <a class="card-link" href="../html/sanpham.html">
+                Điện thoại
+            </a>
+        </div>
+
+        <div class="card-header-custom">
+            <a class="card-link" href="../html/phukien.html">
+                Phụ kiện
+            </a>
+        </div>
+
+        <div class="card-header-custom">
+            <a class="card-link" href="../html/DiaChi.html">
+                Địa chỉ shop
+            </a>
+        </div>
+
+        <div id="accordion">
+            <div class="card-custom">
+                <div class="card-header-custom">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                        Giới thiệu
+                    </a>
+                </div>
+                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <ul>
+                            <li>
+                                <a href="../html/GioiThieuWeb.html">Giới thiệu web</a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="../html/GioiThieuThanhVien.html">Giới thiệu thành viên</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-header-custom">
+            <a class="card-link" href="../html/GioHang.html">
+                Giỏ hàng
+            </a>
+        </div>
+
+        <div class="card-header-custom">
+            <a class="card-link" href="../html/dangnhap.html">
+                Đăng nhập
+            </a>
+        </div>
+
+        <div class="card-header-custom">
+            <a class="card-link" href="#">
+                14h Công Nghệ
+            </a>
+        </div>
+
+        <div class="card-header-custom">
+            <a class="card-link" href="#">
+                Hỏi đáp
+            </a>
+        </div>
+
+        <div class="card-header-custom">
+            <a class="card-link" href="#">
+                Lịch sử đơn hàng
+            </a>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- <div class="footer-container-content"> -->
+            <div class="content-one">
+                <ul>
+                    <li>
+                        <h2>Sản phẩm</h2>
+                    </li>
+                    <li><a href="">Điện thoại mới</a></li>
+                    <li><a href="">Điện thoại cũ</a></li>
+                    <li><a href="">Linh kiện điện thoại mới</a></li>
+                    <li><a href="">Linh kiện nổi bật</a></li>
+                </ul>
+            </div>
+            <div class="content-two">
+                <ul>
+                    <li>
+                        <h2>Thông tin</h2>
+                    </li>
+                    <li><a href="">Giới thiệu về công ty</a></li>
+                    <li><a href="">Chính sách bảo mật</a></li>
+                    <li><a href="">Chính sách bảo hành</a></li>
+                    <li><a href="">Khách hàng thân thiết</a></li>
+                    <li><a href="">Chính sách đổi trả</a></li>
+                    <li><a href="">Chính sách trả góp</a></li>
+                </ul>
+            </div>
+            <div class="content-three">
+                <ul>
+                    <li>
+                        <h2>Tài khoản</h2>
+                    </li>
+                    <li><a href="">Lịch sử mua hàng</a></li>
+                    <li><a href="">Tài khoản của tôi</a></li>
+                    <li><a href="">Khuyến mãi</a></li>
+                    <li><a href="">Sản phẩm yêu thích</a></li>
+                </ul>
+            </div>
+            <div class="content-four">
+                <ul>
+                    <li>
+                        <h2>Liên hệ với chúng tôi</h2>
+                    </li>
+                    <li><a href="">Địa chỉ: Nguyễn Văn Bảo, phường 4, Quận Gò Vấp, thành phố Hồ Chí Minh</a></li>
+                    <li><a href="">Tư vấn mua hàng: 0368636452</a></li>
+                    <li><a href="">Tư vấn kĩ thuật: 0327003644</a></li>
+                    <li><a href="">Email: 20024591.iuh@gmail.com</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+.vision-Iphone ul li .symbol-vision{
+    display:inline-block;
+    vertical-align:middle;
+    width:48px;
+    height:48px;
+    border:1px solid #ffac3b;
+    margin:5px;border-radius:50%
+}
+    .vision-Iphone ul li:nth-child(2) .symbol-vision{
+        border:1px solid #3aab47
+    }
+    .vision-Iphone ul li:nth-child(3) .symbol-vision{
+        border:1px solid #eb8800
+    }
+    .vision-Iphone ul li:nth-child(4) .symbol-vision{
+        border:1px solid #4391de
+    }
+    .vision-Iphone ul li:nth-child(5) .symbol-vision{
+        border:1px solid #e5700c
+    }
+ul li .symbol-vision i{
+    display:block;
+    margin:13px auto
+}
+ul li:nth-child(2) .symbol-vision i,ul li:nth-child(5) .symbol-vision i{
+    margin:8px auto
+}
+ul li:nth-child(3) .symbol-vision i{
+    margin:10px auto
+}
+ul li:nth-child(4) .symbol-vision i{
+    margin:9px auto
+}
+.vision-Iphone li span{
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden;
+    font-size:16px;
+    color:#052857;
+    width:80%;
+    line-height:24px;
+    text-align:left
+}
+input,button{
+    border:none
+}
+.icon-integrity{
+    background-position:-280px -534px;
+    width:32px;
+    height:32px
+}
+.icon-social{
+    background-position:-240px -534px;
+    width:30px;
+    height:30px
+}
+.icon-staff{
+    background-position:-198px -534px;
+    width:32px;
+    height:28px
+}
+.icon-customer{
+    background-position:-164px -534px;
+    width:24px;
+    height:32px
+}
+.icon-vision{
+    background-position:0 -534px;width:107px;
+    height:112px
+}
+.division .logo-vision{
+    display:block;
+    overflow:hidden;
+    margin:40px auto 0
+}
+.division .logo-vision i{
+    display:block;
+    margin:auto
+}
+.division strong{
+    display:block;
+    color:#000;
+    font-size:27px;
+    line-height:50px;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:6px 0 0
+}
+.division strong b{
+    font-size:48px;
+    border-bottom:3px solid #fff;
+    padding-bottom:12px
+}
+.vision-Iphone .division{
+    display:inline-block;
+    vertical-align:middle;
+    text-align:center;
+    width:352px;
+    height:352px;
+    border-radius:50%;
+    background-color:#ffd56b;
+    margin-right:30px
+}
+.vision-Iphone{
+    display:block;
+    background-size:cover;
+    margin:15px 0 45px;
+    position:relative;
+    text-align:center;
+    overflow:hidden
+}
+.vision-Iphone ul{
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden
+}
+.vision-Iphone ul li{
+    display:block;
+    overflow:hidden;
+    background-color:#fffced;
+    border:1px solid #ffac3b;
+    margin:30px 0 0;
+    border-radius:50px;
+    text-align:left
+}
+.vision-Iphone ul li:nth-child(1){
+    width:451px
+}
+.vision-Iphone ul li:nth-child(2){
+    border:1px solid #3aab47;
+    width:436px;
+    margin-left:60px
+}
+.vision-Iphone.vision-en ul li:nth-child(2){
+    border:1px solid #3aab47;
+    width:487px;
+    margin-left:60px
+}
+.vision-Iphone ul li:nth-child(3){
+    border:1px solid #eb8800;
+    width:423px;
+    margin-left:90px
+}
+.vision-Iphone ul li:nth-child(4){
+    border:1px solid #4391de;
+    width:436px;
+    margin-left:60px
+}
+.vision-Iphone ul li:nth-child(5){
+    border:1px solid #e5700c;
+    width:451px
+}
+.box01{
+    margin:30px auto 0;
+    max-width:830px;
+    padding:0 15px
+}
+.box01 p,.box01 li{
+    font-size:16px;
+    line-height:22px;
+    text-align:justify
+}
+.box01 p span,.box01 li span{
+    font-weight:bold
+}
+.box01 ul{
+    padding:20px 0 0
+}
+.box01 ul li{
+    margin-bottom:15px;
+    padding-left:12px;
+    position:relative
+}
+
+
+
+
+
