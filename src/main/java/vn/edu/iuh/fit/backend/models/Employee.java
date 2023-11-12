@@ -1,72 +1,57 @@
 package vn.edu.iuh.fit.backend.models;
 
-import jakarta.json.bind.annotation.JsonbDateFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import vn.edu.iuh.fit.backend.converters.EmployeeStatusConverter;
 import vn.edu.iuh.fit.backend.enums.EmployeeStatus;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "employee")
-@NamedQueries({
-        @NamedQuery(name = "Employee.findAll", query = "SELECT e from Employee e where e.status=1")
-})
-@XmlRootElement
+@NamedQueries(
+        @NamedQuery(name = "Employee.findAll", query = "select e from Employee e where e.status= ?1")
+//        ,@NamedQuery(name = "Employee.findXXXXXXX", query = "select e from Employee e where????")
+        //,...
+)
 public class Employee {
     @Id
-    @Column(name = "emp_id", columnDefinition = "BIGINT(20)")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "emp_id")
     private long id;
-    @Column(columnDefinition = "VARCHAR(250)", nullable = false)
-    private String address;
-    @Column(columnDefinition = "DATETIME(6)", nullable = false)
-    @JsonbDateFormat(value = "yyyy-MM-dd")
-    private LocalDateTime dob;
-    @Column(columnDefinition = "VARCHAR(150)")
-    private String email;
-    @Column(name = "full_name", columnDefinition = "VARCHAR(150)", nullable = false)
+    @Column(name = "full_name", length = 150, nullable = false)
     private String fullname;
-    @Column(columnDefinition = "VARCHAR(15)", nullable = false)
+    @Column(name = "dob", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate dob;
+    @Column(name = "email", unique = true, length = 150)
+    private String email;
+    @Column(name = "phone", length = 15, nullable = false)
     private String phone;
-    @Column(columnDefinition = "INT(11)", nullable = false)
-    @Convert(converter = EmployeeStatusConverter.class)
+    @Column(name = "address", length = 250, nullable = false)
+    private String address;
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
     private EmployeeStatus status;
 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-    private List<Order> listOrder;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+//    @JoinColumn
+    private List<Order> lstOrder;
 
     public Employee() {
     }
 
-    public Employee(String address, LocalDateTime dob, String email, String fullname, String phone, EmployeeStatus status, List<Order> listOrder) {
-        this.address = address;
+    public Employee(String fullname, LocalDate dob, String email, String phone, String address, EmployeeStatus status) {
+        this.fullname = fullname;
         this.dob = dob;
         this.email = email;
-        this.fullname = fullname;
         this.phone = phone;
-        this.status = status;
-        this.listOrder = listOrder;
-    }
-
-    public Employee(long id, String address, LocalDateTime dob, String email, String fullname, String phone, EmployeeStatus status) {
-        this.id = id;
         this.address = address;
-        this.dob = dob;
-        this.email = email;
-        this.fullname = fullname;
-        this.phone = phone;
-        this.status = status;
-    }
-
-    public Employee(String address, LocalDateTime dob, String email, String fullname, String phone, EmployeeStatus status) {
-        this.address = address;
-        this.dob = dob;
-        this.email = email;
-        this.fullname = fullname;
-        this.phone = phone;
         this.status = status;
     }
 
@@ -78,19 +63,19 @@ public class Employee {
         this.id = id;
     }
 
-    public String getAddress() {
-        return address;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
-    public LocalDateTime getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(LocalDateTime dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
@@ -102,20 +87,20 @@ public class Employee {
         this.email = email;
     }
 
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public EmployeeStatus getStatus() {
@@ -126,25 +111,37 @@ public class Employee {
         this.status = status;
     }
 
-    public List<Order> getListOrder() {
-        return listOrder;
+    public List<Order> getLstOrder() {
+        return lstOrder;
     }
 
-    public void setListOrder(List<Order> listOrder) {
-        this.listOrder = listOrder;
+    public void setLstOrder(List<Order> lstOrder) {
+        this.lstOrder = lstOrder;
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "{" +
                 "id=" + id +
-                ", address='" + address + '\'' +
+                ", fullname='" + fullname + '\'' +
                 ", dob=" + dob +
                 ", email='" + email + '\'' +
-                ", fullname='" + fullname + '\'' +
                 ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
                 ", status=" + status +
-                ", listOrder=" + listOrder +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee employee = (Employee) o;
+        return getId() == employee.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

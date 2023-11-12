@@ -1,12 +1,8 @@
 package vn.edu.iuh.fit.backend.repositories;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import vn.edu.iuh.fit.backend.models.Employee;
 
-public class EmployeeRepository {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-
-    public EmployeeRepository() {
-        super();
-    }
+public interface EmployeeRepository extends JpaRepository<Employee, Long>, JpaSpecificationExecutor<Employee> {
 }

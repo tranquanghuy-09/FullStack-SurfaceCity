@@ -1,19 +1,9 @@
 package vn.edu.iuh.fit.backend.repositories;
 
-import jakarta.persistence.TypedQuery;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import vn.edu.iuh.fit.backend.models.Product;
 import vn.edu.iuh.fit.backend.models.ProductPrice;
 
-public class ProductPriceRepository extends CRUDAbstractRepository<ProductPrice>{
-    public ProductPriceRepository() {
-        super();
-    }
-    public ProductPrice getProductByIdWithNewPrice(long id){
-        try {
-            return em.createNamedQuery("ProductPrice.getProductByIdWithNewPrice", ProductPrice.class).setParameter("productId", id).getSingleResult();
-        }catch (Exception ex){
-            logger.error(ex.getMessage());
-            ex.printStackTrace();
-        }
-        return null;
-    }
+public interface ProductPriceRepository extends JpaRepository<ProductPrice, Product>, JpaSpecificationExecutor<ProductPrice> {
 }

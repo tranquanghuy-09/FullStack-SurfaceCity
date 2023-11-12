@@ -1,7 +1,5 @@
 package vn.edu.iuh.fit.backend.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.enterprise.inject.Default;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -9,59 +7,42 @@ import java.util.List;
 @Entity
 @Table(name = "customer")
 @NamedQueries({
-        @NamedQuery(name = "Customer.getAll", query = "FROM Customer")
+        @NamedQuery(name = "Customer.getAll",query = "select c from Customer c")
+
 })
 public class Customer {
     @Id
-    @Column(name = "cust_id", columnDefinition = "BIGINT(20)")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cust_id")
     private long id;
-    @Column(columnDefinition = "VARCHAR(250)", nullable = false)
-    private String address;
-    @Column(columnDefinition = "VARCHAR(150)")
-    private String email;
-    @Column(name = "cust_name", columnDefinition = "VARCHAR(150)", nullable = false)
+    @Column(name = "cust_name", length = 150, nullable = false)
     private String name;
-    @Column(columnDefinition = "VARCHAR(15)", nullable = false)
+    @Column(name = "email", unique = true, length = 150, nullable = true)
+    private String email;
+    @Column(name = "phone", length = 15, nullable = false)
     private String phone;
-    @OneToOne(mappedBy = "customer")
-    private Account account;
+    @Column(name = "address", length = 250, nullable = false)
+    private String address;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer")
     private List<Order> orderList;
 
     public Customer() {
     }
 
-    public Customer(String address, String email, String name, String phone) {
-        this.address = address;
-        this.email = email;
+    public Customer(String name, String email, String phone, String address) {
         this.name = name;
+        this.email = email;
         this.phone = phone;
+        this.address = address;
     }
 
     public long getId() {
         return id;
     }
 
-    private void setId(long id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getName() {
@@ -72,6 +53,14 @@ public class Customer {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -80,7 +69,14 @@ public class Customer {
         this.phone = phone;
     }
 
-    @JsonIgnore
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public List<Order> getOrderList() {
         return orderList;
     }
@@ -93,10 +89,10 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

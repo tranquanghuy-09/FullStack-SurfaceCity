@@ -1,47 +1,46 @@
 package vn.edu.iuh.fit.backend.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import vn.edu.iuh.fit.backend.pks.OrderDetailPK;
 
 @Entity
 @Table(name = "order_detail")
-@NamedQueries({
-        @NamedQuery(name = "OrderDetail.getAll", query = "FROM OrderDetail"),
-        @NamedQuery(name = "OrderDetail.findById", query = "FROM OrderDetail WHERE product.id = :productId AND order.id = :orderId"),
-})
-@XmlRootElement
+@IdClass(OrderDetailPK.class)
 public class OrderDetail {
-    @Column(columnDefinition = "DOUBLE", nullable = false)
-    private double price;
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "order_id", referencedColumnName = "order_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Order order;
-    @Column(columnDefinition = "DOUBLE", nullable = false)
+    @Column(name = "quantity", nullable = false)
     private double quantity;
-    @Column(columnDefinition = "VARCHAR(255)")
+    @Column(name = "price", nullable = false)
+    private double price;
+    @Column(name = "note", length = 255, nullable = true)
     private String note;
+
     @Id
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+    @JoinColumn(name = "order_id")
+    private Order order;
+    @Id
+    @JoinColumn(name = "product_id")
+    @ManyToOne
     private Product product;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(Order order, Product product) {
+    public OrderDetail(double quantity, double price, String note, Order order, Product product) {
+        this.quantity = quantity;
+        this.price = price;
+        this.note = note;
         this.order = order;
         this.product = product;
     }
 
-    public OrderDetail(double price, Order order, double quantity, String note, Product product) {
-        this.price = price;
-        this.order = order;
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
-        this.note = note;
-        this.product = product;
     }
 
     public double getPrice() {
@@ -52,28 +51,20 @@ public class OrderDetail {
         this.price = price;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
-
     public String getNote() {
         return note;
     }
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public Product getProduct() {
@@ -87,10 +78,10 @@ public class OrderDetail {
     @Override
     public String toString() {
         return "OrderDetail{" +
-                "price=" + price +
-                ", order=" + order +
                 ", quantity=" + quantity +
+                ", price=" + price +
                 ", note='" + note + '\'' +
+                ", order=" + order +
                 ", product=" + product +
                 '}';
     }

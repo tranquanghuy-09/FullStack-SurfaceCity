@@ -1,38 +1,33 @@
 package vn.edu.iuh.fit.backend.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.XmlRootElement;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "product_image")
-@NamedQueries({
-        @NamedQuery(name = "ProductImage.getAll", query = "FROM ProductImage"),
-        @NamedQuery(name = "ProductImage.getByProductId", query = "FROM ProductImage WHERE product.id = :productId")
-})
-@XmlRootElement
 public class ProductImage {
     @Id
-    @Column(columnDefinition = "BIGINT(20)")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "image_id")
     private long image_id;
-    @Column(columnDefinition = "VARCHAR(250)")
-    private String alternative;
-    @Column(columnDefinition = "VARCHAR(250)", nullable = false)
+    /*@Column(name = "product_id")
+    private long product_id;*/
+    @Column(name = "path", length = 250, nullable = false)
     private String path;
+    @Column(name = "alternative", length = 250)
+    private String alternative;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     public ProductImage() {
     }
 
-    public ProductImage(String alternative, String path, Product product) {
-        this.alternative = alternative;
+    public ProductImage(String path, String alternative) {
         this.path = path;
-        this.product = product;
+        this.alternative = alternative;
     }
 
     public long getImage_id() {
@@ -43,13 +38,6 @@ public class ProductImage {
         this.image_id = image_id;
     }
 
-    public String getAlternative() {
-        return alternative;
-    }
-
-    public void setAlternative(String alternative) {
-        this.alternative = alternative;
-    }
 
     public String getPath() {
         return path;
@@ -57,6 +45,14 @@ public class ProductImage {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getAlternative() {
+        return alternative;
+    }
+
+    public void setAlternative(String alternative) {
+        this.alternative = alternative;
     }
 
     public Product getProduct() {
@@ -71,9 +67,22 @@ public class ProductImage {
     public String toString() {
         return "ProductImage{" +
                 "image_id=" + image_id +
-                ", alternative='" + alternative + '\'' +
                 ", path='" + path + '\'' +
-                ", product=" + product +
+                ", alternative='" + alternative + '\'' +
+//                ", product=" + product +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductImage that = (ProductImage) o;
+        return image_id == that.image_id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(image_id);
     }
 }

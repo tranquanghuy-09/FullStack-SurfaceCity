@@ -7,47 +7,34 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-@NamedQueries({
-        @NamedQuery(name = "Order.getAll", query = "FROM Order"),
-        @NamedQuery(name = "Order.statisticsByDate", query = "SELECT orderDate, count(*) as count FROM Order GROUP BY orderDate ORDER BY orderDate"),
-        @NamedQuery(name = "Order.statisticsByPeriod", query = "SELECT orderDate, count(*) as count FROM Order WHERE orderDate >= ?1 and orderDate <= ?2 GROUP BY orderDate ORDER BY orderDate"),
-        @NamedQuery(name = "Order.statisticsByEmployee", query = "SELECT employee.id, count(*) as count FROM Order WHERE orderDate >= ?1 and orderDate <= ?2 group by employee.id")
-})
 public class Order {
     @Id
-    @Column(columnDefinition = "BIGINT(20)")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private long order_id;
-    @Column(name = "order_date", columnDefinition = "DATETIME(6)", nullable = false)
+
+    @Column(name = "order_date", nullable = false)
     private LocalDateTime orderDate;
+
     @ManyToOne
-    @JoinColumn(name = "cust_id", referencedColumnName = "cust_id")
-    private Customer customer;
-    @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "emp_id", nullable = false)
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
-    @OneToMany(mappedBy = "order")
+    @ManyToOne
+    @JoinColumn(name = "cust_id")
+    private Customer customer;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderDetail> orderDetails;
 
     public Order() {
     }
 
-    public Order(long order_id) {
-        this.order_id = order_id;
-    }
-
-    public Order(LocalDateTime orderDate, Customer customer, Employee employee) {
-        this.orderDate = orderDate;
-        this.customer = customer;
-        this.employee = employee;
-    }
-
-    public Order(long order_id, LocalDateTime orderDate, Customer customer, Employee employee) {
+    public Order(long order_id, LocalDateTime orderDate, Employee employee, Customer customer) {
         this.order_id = order_id;
         this.orderDate = orderDate;
-        this.customer = customer;
         this.employee = employee;
+        this.customer = customer;
     }
 
     public long getOrder_id() {
@@ -66,20 +53,20 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public Employee getEmployee() {
         return employee;
     }
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public List<OrderDetail> getOrderDetails() {
@@ -95,8 +82,9 @@ public class Order {
         return "Order{" +
                 "order_id=" + order_id +
                 ", orderDate=" + orderDate +
-                ", customer=" + customer +
                 ", employee=" + employee +
+                ", customer=" + customer +
+                ", orderDetails=" + orderDetails +
                 '}';
     }
 }

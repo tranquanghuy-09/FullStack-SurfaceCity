@@ -1,18 +1,16 @@
 package vn.edu.iuh.fit.backend.enums;
 
-import com.fasterxml.jackson.annotation.JsonValue;
-
 public enum ProductStatus {
-    ACTIVE(1), INACTIVE(0), DISCONTINUED(-1);
+    ACTIVE(1),//đang kinh doanh
+    IN_ACTIVE(0), //tam ngung
+    TERMINATED(-1); //khong ban nua
+    private int value;
 
-    private final int status;
-
-    private ProductStatus(int status) {
-        this.status = status;
+    ProductStatus(int value) {
+        this.value = value;
     }
 
-    @JsonValue
-    public int getStatus() {
-        return status;
+    public int getValue() {
+        return value;
     }
 }
