@@ -10,6 +10,11 @@ Create web pages that act like a e-commerce web site.
             <td style="border: 1px solid black;padding: 10px; font-weight: bold; color: red;">20092731</td>
         </tr>
     </table>
+# Table of Contents
+- [Orders Statistics](#orders-statistics)
+- [Manager Product](#managerproduct)
+
+
 # Database relationship diagram
 <img width="763" alt="Ảnh màn hình 2023-11-29 lúc 22 09 07" src="https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/0912b46c-0729-4700-bb54-78f154e0ca40">
 
