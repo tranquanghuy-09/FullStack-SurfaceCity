@@ -2,68 +2,110 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Candidates</title>
+    <title>Add New Product</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
     <style>
-        .x{
-            position: fixed;
+        body {
+            background-color: #f8f9fa;
+            padding-top: 3rem;
+        }
+
+        .x {
             padding: 1.5rem;
             margin-right: 10px;
             margin-left: 0;
             border-width: 1px;
             border-top-left-radius: .25rem;
             border-top-right-radius: .25rem;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
     </style>
 </head>
 <body>
-<h1 th:align="center">ADD NEW PRODUCT</h1>
-<div class="x">
-    <form action="#" th:action="@{/admin/products/add}" th:object="${product}" method="post">
-        <div class="row mb-3">
-            <label for="name" class="col-sm-3 ">Name</label>
-            <div class="col-12">
-                <input type="text" class="form-control" id="name" th:field="*{name}">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="description" class="col-sm-5">Description</label>
-            <div class="col-12">
-                <textarea rows="6" cols="20" class="form-control" id="description" th:field="*{description}"}></textarea>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="unit" class="col-sm-10 ">Unit</label>
-            <div class="col-12">
-                <input type="text" class="form-control" id="unit" th:field="*{unit}">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputManu" class="col-sm-10 ">Manufacturer</label>
-            <div class="col-12">
-                <input type="text" class="form-control" id="inputManu" th:field="*{manufacturer}">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="selectStatus" class="col-sm-10 ">Status</label>
-            <div class="col-12">
-<!--                <input type="text" class="form-control" id="inputStatus" th:field="*{status}">-->
-                <select id="selectStatus" th:field="*{status}">
-                    <option th:each="st : ${T(vn.edu.iuh.fit.backend.enums.ProductStatus).values()}"
-                            th:value="${st}" th:text="${st}"></option>
-                </select>
-            </div>
-        </div>
+<div class="container">
+    <h1 class="text-center mb-4">Add New Product</h1>
+    <div class="x">
+        <form th:action="@{/admin/products/update2}" role="form" method="post" enctype="multipart/form-data" th:object="${product}">
+            <input type="hidden" name="_method" th:value="PUT" />
 
-        <br/>
-        <div class="d-grid gap-1 col-3 mx-auto">
-            <input class="btn btn-primary" type="submit" value="Add Product">
-        </div>
-    </form>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="id" class="form-label">ID</label>
+                    <input disabled th:value="${product.product_id}" type="text" class="form-control" id="id" placeholder="ID">
+                </div>
+                <div class="col-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input th:field="${product.name}" type="text" class="form-control" id="name" placeholder="Name">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-6 mb-3">
+                    <label for="Image" class="form-label">Image</label>
+                    <div>
+                        <div class="d-flex justify-content-center">
+                            <img id="selectedImage" th:src="${productImage}" alt="example placeholder" style="width: 60%" />
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="btn btn-secondary btn-rounded mt-3">
+                                <label class="form-label text-white m-1" for="Image">Choose file</label>
+                                <input name="img" type="file" class="form-control d-none" id="Image" onchange="displaySelectedImage(event, 'selectedImage')" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea th:field="${product.description}" class="form-control" id="description" rows="10" placeholder="Description"></textarea>
+
+                    <label for="manufacturer" class="form-label">Manufacturer</label>
+                    <input th:field="${product.manufacturer}" type="text" class="form-control" id="manufacturer" placeholder="Manufacturer">
+
+                    <label for="status" class="form-label">Status</label>
+                    <input th:field="${product.status}" type="text" class="form-control" id="status" placeholder="Status">
+
+                    <label for="unit" class="form-label">Unit</label>
+                    <input th:field="${product.unit}" type="text" class="form-control" id="unit" placeholder="Unit">
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                <button class="btn btn-primary p-2 text-uppercase text-bold" type="submit">Update</button>
+            </div>
+        </form>
+
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 </html>

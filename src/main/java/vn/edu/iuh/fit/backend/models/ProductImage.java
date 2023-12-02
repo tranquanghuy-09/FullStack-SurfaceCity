@@ -30,6 +30,12 @@ public class ProductImage {
         this.alternative = alternative;
     }
 
+    public ProductImage(String path, String alternative, Product product) {
+        this.path = path;
+        this.alternative = alternative;
+        this.product = product;
+    }
+
     public long getImage_id() {
         return image_id;
     }
