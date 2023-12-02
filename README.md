@@ -12,8 +12,12 @@ Create web pages that act like a e-commerce web site.
     </table>
 # Table of Contents
 - [Orders Statistics](#orders-statistics)
+- [Orders Statistics By Employee](#orders-statistics-by-employee)
 - [Manager Product](#managerproduct)
-
+- [Add Product](#addproduct)
+- [Detail Product](#detailproduct)
+- [Update Product](#updateproduct)
+- [HomePage](#homepage)
 
 # Database relationship diagram
 <img width="763" alt="Ảnh màn hình 2023-11-29 lúc 22 09 07" src="https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/0912b46c-0729-4700-bb54-78f154e0ca40">
@@ -32,6 +36,7 @@ Create web pages that act like a e-commerce web site.
 ## Orders Statistics
 ![Ảnh màn hình 2023-12-02 lúc 19 38 32](https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/b792ea63-6788-4703-be97-1f0ed3d68840)
 
+## Orders Statistics By Employee
 ![Ảnh màn hình 2023-12-02 lúc 19 39 29](https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/a84f24dd-7af7-4e93-a23f-9a3bbca588a0)
 
 ![Ảnh màn hình 2023-12-02 lúc 19 39 42](https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/960a6427-a535-496a-ab47-17cf34413e8f)
