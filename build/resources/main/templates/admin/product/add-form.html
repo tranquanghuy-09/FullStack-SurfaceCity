@@ -52,55 +52,35 @@
 <div class="container">
     <h1 class="text-center mb-4">Add New Product</h1>
     <div class="x">
-        <form th:action="@{/admin/products/update2}" role="form" method="post" enctype="multipart/form-data" th:object="${product}">
-            <input type="hidden" name="_method" th:value="PUT" />
-
-            <div class="row mb-3">
-                <div class="col-6">
-                    <label for="id" class="form-label">ID</label>
-                    <input disabled th:value="${product.product_id}" type="text" class="form-control" id="id" placeholder="ID">
-                </div>
-                <div class="col-6">
-                    <label for="name" class="form-label">Name</label>
-                    <input th:field="${product.name}" type="text" class="form-control" id="name" placeholder="Name">
-                </div>
+        <form action="#" th:action="@{/admin/products/add}" th:object="${product}" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea rows="6" class="form-control" id="description" th:field="*{description}"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="unit" class="form-label">Unit</label>
+                <input type="text" class="form-control" id="unit" th:field="*{unit}">
+            </div>
+            <div class="mb-3">
+                <label for="inputManu" class="form-label">Manufacturer</label>
+                <input type="text" class="form-control" id="inputManu" th:field="*{manufacturer}">
+            </div>
+            <div class="mb-3">
+                <label for="selectStatus" class="form-label">Status</label>
+                <select id="selectStatus" class="form-select" th:field="*{status}">
+                    <option th:each="st : ${T(vn.edu.iuh.fit.backend.enums.ProductStatus).values()}"
+                            th:value="${st}" th:text="${st}"></option>
+                </select>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-6 mb-3">
-                    <label for="Image" class="form-label">Image</label>
-                    <div>
-                        <div class="d-flex justify-content-center">
-                            <img id="selectedImage" th:src="${productImage}" alt="example placeholder" style="width: 60%" />
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="btn btn-secondary btn-rounded mt-3">
-                                <label class="form-label text-white m-1" for="Image">Choose file</label>
-                                <input name="img" type="file" class="form-control d-none" id="Image" onchange="displaySelectedImage(event, 'selectedImage')" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea th:field="${product.description}" class="form-control" id="description" rows="10" placeholder="Description"></textarea>
-
-                    <label for="manufacturer" class="form-label">Manufacturer</label>
-                    <input th:field="${product.manufacturer}" type="text" class="form-control" id="manufacturer" placeholder="Manufacturer">
-
-                    <label for="status" class="form-label">Status</label>
-                    <input th:field="${product.status}" type="text" class="form-control" id="status" placeholder="Status">
-
-                    <label for="unit" class="form-label">Unit</label>
-                    <input th:field="${product.unit}" type="text" class="form-control" id="unit" placeholder="Unit">
-                </div>
-            </div>
-
-            <div class="d-grid gap-2 col-6 mx-auto mt-5">
-                <button class="btn btn-primary p-2 text-uppercase text-bold" type="submit">Update</button>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit">Add Product</button>
             </div>
         </form>
-
     </div>
 </div>
 

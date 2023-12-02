@@ -35,16 +35,20 @@
                 <h1 class="h3 mb-2 text-gray-800 mx-auto">Update Products</h1>
             </div>
 
-            <form th:action="@{/admin/products/update2}" role="form" method="post" enctype="multipart/form-data">
+            <form th:action="@{/admin/products/update}" method="post" enctype="multipart/form-data" >
                 <input type="hidden" th:value="${product.product_id}" th:field="${product.product_id}">
                 <div class="row mb-3">
-                    <div class="col-6">
-                        <label for="id" class="form-label">ID</label>
-                        <input disabled th:value="${product.product_id}" type="text" class="form-control" id="id" placeholder="ID">
-                    </div>
+<!--                    <div class="col-6">-->
+<!--                        <label for="id" class="form-label">ID</label>-->
+<!--                        <input disabled th:value="${product.product_id}" th:field="${product.product_id}" type="text" class="form-control" id="id" placeholder="ID">-->
+<!--                    </div>-->
                     <div class="col-6">
                         <label for="name" class="form-label">Name</label>
                         <input th:field="${product.name}" type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="Price" class="form-label">Price</label>
+                        <input th:field="${productPrice.price}" th:data="${#numbers.formatDecimal(productPrice.getPrice(), 1, 2)}" type="text" class="form-control" id="Price" placeholder="Price">
                     </div>
                 </div>
 
@@ -65,16 +69,22 @@
                     </div>
                     <div class="col-6">
                         <label for="description" class="form-label">Description</label>
-                        <textarea th:field="${product.description}" class="form-control" id="description" rows="10" placeholder="Description"></textarea>
+                        <textarea th:field="${product.description}" th:value="${product.description}" class="form-control" id="description" rows="10" placeholder="Description"></textarea>
 
                         <label for="manufacturer" class="form-label">Manufacturer</label>
-                        <input th:field="${product.manufacturer}" type="text" class="form-control" id="manufacturer" placeholder="Manufacturer">
+                        <input th:field="${product.manufacturer}" th:value="${product.manufacturer}" type="text" class="form-control" id="manufacturer" placeholder="Manufacturer">
 
                         <label for="status" class="form-label">Status</label>
-                        <input th:field="${product.status}" type="text" class="form-control" id="status" placeholder="Status">
+                        <select id="status" class="form-select" th:field="*{product.status}">
+                            <option th:each="st : ${T(vn.edu.iuh.fit.backend.enums.ProductStatus).values()}"
+                                    th:value="${st}" th:text="${st}"></option>
+                        </select>
+<!--                        <select th:field="${product.status}" id="status" class="form-control" aria-label="Default select example">-->
+<!--                            <option th:selected="${product.status == productStatus}" th:each="productStatus : ${productStatuses}" th:value="${productStatus}" th:text="${productStatus.name()}"></option>-->
+<!--                        </select>-->
 
                         <label for="unit" class="form-label">Unit</label>
-                        <input th:field="${product.unit}" type="text" class="form-control" id="unit" placeholder="Unit">
+                        <input th:field="${product.unit}" th:value="${product.unit}" type="text" class="form-control" id="unit" placeholder="Unit">
                     </div>
                 </div>
 

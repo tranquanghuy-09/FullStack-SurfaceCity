@@ -102,8 +102,10 @@ public class ProductController {
             }else{
                 model.addAttribute("productImage", productImages.get(0).getPath());
             }
+            if (productPrice.isPresent()){
+                model.addAttribute("productPrice", productPrice.get());
+            }
             model.addAttribute("product", product);
-            model.addAttribute("productPrice", productPrice);
 
             return "admin/product/update";
 
@@ -112,7 +114,7 @@ public class ProductController {
     }
 
     @Transactional
-    @PostMapping("products/update2")
+    @PostMapping("products/update")
     public String update(@ModelAttribute("product") Product product,
                          @ModelAttribute("productPrice") ProductPrice productPrice,
                          @RequestParam("img") MultipartFile file){
