@@ -35,6 +35,9 @@ Create web pages that act like a e-commerce web site.
         <li>Admin CRUD for object</li>
         <li>Order statistics by day, by time period</li>
         <li>Order statistics by employee over a period of time</li>
+        <li>Client view product list</li>
+        <li>Add product to cart</li>
+        <li>Manager cart and check out</li>
         <li>...</li>
     </ul>
 
