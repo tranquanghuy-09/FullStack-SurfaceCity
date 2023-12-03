@@ -15,7 +15,7 @@ import java.util.Objects;
         @NamedQuery(name = "Product.findById", query = "select p from Product p where p.productId = ?1")
         //,...1
 })
-public class Product {
+public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
@@ -123,6 +123,13 @@ public class Product {
 
     public void setProductPrices(List<ProductPrice> productPrices) {
         this.productPrices = productPrices;
+    }
+
+    public double getPrice() {
+        if (getProductPrices().isEmpty())
+            return 0;
+
+        return getProductPrices().get(getProductPrices().size() - 1).getPrice();
     }
 
     @Override

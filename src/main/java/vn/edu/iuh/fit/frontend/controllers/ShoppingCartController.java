@@ -13,13 +13,13 @@ import vn.edu.iuh.fit.frontend.dto.CartItem;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-@RequestMapping("/cart")
+//@Controller
+//@RequestMapping("/cart")
 public class ShoppingCartController {
-    @GetMapping("/view-cart")
-    public String view_cart(Model model, HttpSession session) {
-        return "client/checkout";
-    }
+//    @GetMapping("/view-cart")
+//    public String view_cart(Model model, HttpSession session) {
+//        return "client/checkout";
+//    }
 
    /* @GetMapping("/add2cart")
     public String add2Cart(HttpSession session, Model model, @ModelAttribute("item") CartItem item) {

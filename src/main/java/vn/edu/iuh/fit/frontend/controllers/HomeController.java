@@ -34,6 +34,13 @@ public class HomeController {
     public String home(HttpSession session, Model model,
                        @RequestParam("page") Optional<Integer> page,
                        @RequestParam("size") Optional<Integer> size) {
+        Object oQtyCart = session.getAttribute("qtyCart");
+        int qtyCart = 0 ;
+        if(oQtyCart!=null){
+            qtyCart = (int) oQtyCart;
+        }
+        model.addAttribute("qtyCart", qtyCart);
+
         int currentPage = page.orElse(0);
         int pageSize = size.orElse(8);
         Page<Product> productPage = productServices.findPaginated(currentPage, pageSize, "productId", "asc");
@@ -85,11 +92,6 @@ public class HomeController {
 
 
         return modelAndView;
-    }
-
-    @GetMapping("/product/1")
-    public String productDetail(){
-        return "client/product-detail";
     }
 
 }

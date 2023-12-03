@@ -3,13 +3,14 @@ package vn.edu.iuh.fit.backend.models;
 import jakarta.persistence.*;
 import vn.edu.iuh.fit.backend.pks.ProductPricePK;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
 @Table(name = "product_price")
 @IdClass(ProductPricePK.class)
-public class ProductPrice {
+public class ProductPrice implements Serializable {
     @Id
     @JoinColumn(name = "product_id")
     @ManyToOne
