@@ -11,13 +11,18 @@ Create web pages that act like a e-commerce web site.
         </tr>
     </table>
 # Table of Contents
+## ADMIN
 - [Orders Statistics](#orders-statistics)
 - [Orders Statistics By Employee](#orders-statistics-by-employee)
 - [Manager Product](#managerproduct)
 - [Add Product](#addproduct)
 - [Detail Product](#detailproduct)
 - [Update Product](#updateproduct)
+
+## CLIENT
 - [HomePage](#homepage)
+- [Product Detail for Add to Cart](#product-detail-for-add-to-cart)
+- [Manager Cart, Cart for Checkout](#cart-for-checkout)
 
 # Database relationship diagram
 <img width="763" alt="Ảnh màn hình 2023-11-29 lúc 22 09 07" src="https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/0912b46c-0729-4700-bb54-78f154e0ca40">
@@ -53,10 +58,16 @@ Create web pages that act like a e-commerce web site.
 ## UpdateProduct
 ![Ảnh màn hình 2023-12-02 lúc 19 41 49](https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/8c139207-f9fa-4910-af03-0c343a1a8c36)
 
-# HomePage
+# CLIENT
+## HomePage
 ![Ảnh màn hình 2023-11-29 lúc 22 09 53](https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/a3168e5b-af8e-4905-9cba-a07a95e7aa39)
 ![Ảnh màn hình 2023-11-29 lúc 22 10 03](https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/6764fecb-b4e5-40d8-933c-065e5110c3b2)
 ![Ảnh màn hình 2023-11-29 lúc 22 10 08](https://github.com/tranquanghuy-09/WWW-JAVA-Week7/assets/107989088/d474ca3b-59c6-4880-b18d-36bb2906ceaa)
 
+## Product Detail for Add to Cart
+![Ảnh màn hình 2023-12-03 lúc 18 35 37](https://github.com/tranquanghuy-09/WWW-JAVA-Week7-8-9/assets/107989088/6dbe1a93-a936-4965-9af6-731d98e847c1)
+
+## Cart for Checkout
+![Ảnh màn hình 2023-12-03 lúc 18 35 57](https://github.com/tranquanghuy-09/WWW-JAVA-Week7-8-9/assets/107989088/06436ba1-d8fb-4b83-b8a3-70dbecb0626c)
 
 
