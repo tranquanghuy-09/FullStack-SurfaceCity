@@ -23,8 +23,7 @@ public class Product implements Serializable{
     @Column(name = "name", length = 150, nullable = false)
     private String name;
 
-    @Lob
-    @Column(name = "description",  columnDefinition = "text", nullable = false)
+    @Column(name = "description",  columnDefinition = "TEXT", nullable = false)
     private String description;
     @Column(name = "unit", length = 25, nullable = false)
     private String unit;
