@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>Shop Homepage</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/assets/logomini.png" />
         <!-- Bootstrap icons-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -29,7 +29,7 @@
         <header class="bg-light py-3">
             <div class="container">
                 <div class="text-center text-white">
-                    <img src="/assets/banner.jpeg" alt="" srcset="" width="100%">
+                    <img src="/assets/banner-giangsinh2.webp" alt="" srcset="" width="100%">
                 </div>
             </div>
         </header>
@@ -71,16 +71,16 @@
             </div>
         </section>
         <div class="inline container py-3" th:if="${productPage.totalPages > 0}" style="width: 100%; text-align: center">
-            <span th:each="pageNumber : ${pageNumbers}" style="border: 1px solid #0a53be; display: inline-block; width: 30px; margin: 10px">
+            <span th:each="pageNumber : ${pageNumbers}" style="border: 1px solid #D2D2D2; display: inline-block; width: 35px; margin: 10px; border-radius: 5px; padding: 5px" ; >
                 <a th:href="@{/client/products(size=${productPage.size}, page=${pageNumber}-1)}"
                    th:text="${pageNumber}"
-                   th:class="${pageNumber==productPage.number + 1} ? active"></a>
+                   th:class="${pageNumber==productPage.number + 1} ? active" style="text-decoration: none"></a>
             </span>
 
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container"><p class="m-0 text-center text-white">&copy; 2023. Tran Quang Huy</p></div>
         </footer>
 
         <!-- Đoạn mã JavaScript để định dạng lại số -->
