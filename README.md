@@ -4,7 +4,7 @@
    or my website https://tranquanghuyit09.website   --> Use DNS for custom domain surfacecity.up.railway.app
 
 ## HomePage
-![Ảnh màn hình 2023-12-26 lúc 07 57 17](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/49d58df5-0a5a-48d1-8085-8d6ee71b7d22)
+![Ảnh màn hình 2023-12-26 lúc 07 57 10](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/bd35756e-355e-4afa-bb79-fe940294fb3d)
 ![Ảnh màn hình 2023-12-26 lúc 07 57 29](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/8d78ac62-3505-4692-8948-0b756b863234)
 ![Ảnh màn hình 2023-12-26 lúc 07 58 01](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/04dd59a8-e3fe-4d2c-9aaa-40f1b8217989)
 
@@ -66,7 +66,7 @@
 
 # CLIENT
 ## HomePage
-![Ảnh màn hình 2023-12-26 lúc 07 57 17](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/49d58df5-0a5a-48d1-8085-8d6ee71b7d22)
+![Ảnh màn hình 2023-12-26 lúc 07 57 10](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/bd35756e-355e-4afa-bb79-fe940294fb3d)
 ![Ảnh màn hình 2023-12-26 lúc 07 57 29](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/8d78ac62-3505-4692-8948-0b756b863234)
 ![Ảnh màn hình 2023-12-26 lúc 07 58 01](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/04dd59a8-e3fe-4d2c-9aaa-40f1b8217989)
 
