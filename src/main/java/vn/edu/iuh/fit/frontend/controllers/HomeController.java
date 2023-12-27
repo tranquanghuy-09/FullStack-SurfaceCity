@@ -30,7 +30,7 @@ public class HomeController {
     @Autowired
     private EmployeeServices employeeServices;
 
-    @GetMapping({"", "/", "/client/products"})
+    @GetMapping({"", "/", "/products"})
     public String home(HttpSession session, Model model,
                        @RequestParam("page") Optional<Integer> page,
                        @RequestParam("size") Optional<Integer> size) {
