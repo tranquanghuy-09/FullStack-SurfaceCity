@@ -30,16 +30,17 @@ public class HomeController {
     @Autowired
     private EmployeeServices employeeServices;
 
-    @GetMapping({"", "/", "/client/products"})
-    public String home(HttpSession session, Model model,
+    @GetMapping({"", "/", "/products"})
+    public ModelAndView home(HttpSession session, Model model,
                        @RequestParam("page") Optional<Integer> page,
                        @RequestParam("size") Optional<Integer> size) {
+        ModelAndView modelAndView = new ModelAndView();
         Object oQtyCart = session.getAttribute("qtyCart");
         int qtyCart = 0 ;
         if(oQtyCart!=null){
             qtyCart = (int) oQtyCart;
         }
-        model.addAttribute("qtyCart", qtyCart);
+        modelAndView.addObject("qtyCart", qtyCart);
 
         int currentPage = page.orElse(0);
         int pageSize = size.orElse(8);
@@ -48,16 +49,16 @@ public class HomeController {
              ) {
             System.out.println(product);
         }
-        model.addAttribute("productPage", productPage);
+        modelAndView.addObject("productPage", productPage);
 
         int totalPages = productPage.getTotalPages();
         if(totalPages>0){
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed()
                     .collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
+            modelAndView.addObject("pageNumbers", pageNumbers);
         }
-
-        return "client/index";
+        modelAndView.setViewName("client/index");
+        return modelAndView;
     }
 
 //    @GetMapping("/login")
