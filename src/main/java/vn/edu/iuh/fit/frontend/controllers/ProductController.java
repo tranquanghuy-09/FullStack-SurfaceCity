@@ -153,7 +153,14 @@ public class ProductController {
     }
 
     @GetMapping("/product/{id}")
-    public String detail(@PathVariable("id") long id, Model model){
+    public String detail(HttpSession session, @PathVariable("id") long id, Model model){
+        Object oQtyCart = session.getAttribute("qtyCart");
+        int qtyCart = 0 ;
+        if(oQtyCart!=null){
+            qtyCart = (int) oQtyCart;
+        }
+        model.addAttribute("qtyCart", qtyCart);
+
         Optional<Product> productOptional = productRepository.findById(id);
         Product product = productOptional.get();
         List<ProductImage> productImages = productImageRepository.findAllByProduct(product);
