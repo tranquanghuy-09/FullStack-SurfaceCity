@@ -3,9 +3,10 @@
    or https://surfacecity.onrender.com  --> Slow web loading, fast operations </br> </br>
 
 ## HomePage
-![Ảnh màn hình 2023-12-26 lúc 07 57 10](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/bd35756e-355e-4afa-bb79-fe940294fb3d)
-![Ảnh màn hình 2023-12-26 lúc 07 57 29](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/8d78ac62-3505-4692-8948-0b756b863234)
-![Ảnh màn hình 2023-12-26 lúc 07 58 01](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/04dd59a8-e3fe-4d2c-9aaa-40f1b8217989)
+![Ảnh màn hình 2024-07-10 lúc 16 18 13](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/f384e038-5dab-4435-b4e2-1dd0e9800356)
+![Ảnh màn hình 2024-07-10 lúc 16 18 53](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/f5b224ef-92a3-466a-b3ba-9e2dc7864356)
+![Ảnh màn hình 2024-07-10 lúc 16 19 30](https://github.com/tranquanghuy-09/FullStack-SurfaceCity/assets/107989088/e17cd0b0-0f90-4652-a1c6-c46ddab17906)
+
 
 # Table of Contents
 ## ADMIN
